@@ -110,7 +110,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 		<div class="_gaps_m">
 			<MkSwitch v-model="profile.isCat">{{ i18n.ts.flagAsCat }}<template #caption>{{ i18n.ts.flagAsCatDescription }}</template></MkSwitch>
 
-			<MkSwitch v-model="profile.speakAsCat">{{ i18n.ts.speakAsCat }}<template #caption>{{ i18n.ts.speakAsCatDescription }}</template></MkSwitch>
+			<MkSwitch v-model="profile.speakAsCat">{{ i18n.ts.flagSpeakAsCat }}<template #caption>{{ i18n.ts.flagSpeakAsCatDescription }}</template></MkSwitch>
 
 			<MkInput v-model="profile.outerEarColor" manualSave>
 				<template #label>{{ i18n.ts.outerEarColor }}</template>
