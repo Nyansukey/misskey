@@ -85,13 +85,13 @@ const onInput = () => {
 };
 
 const updated = () => {
-	emit("update:modelValue", colorValue.value);
+	emit("update:modelValue", colorValue.value.replace("#", ""));
 	changed.value = false;
 };
 
 const resetColor = () => {
 	colorValue.value = defaultColor;
-	emit("update:modelValue", defaultColor);
+	emit("update:modelValue", defaultColor.replace("#", ""));
 	changed.value = false;
 };
 </script>
