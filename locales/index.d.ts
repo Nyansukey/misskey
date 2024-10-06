@@ -731,6 +731,30 @@ export interface Locale extends ILocale {
      */
     "flagAsCatDescription": string;
     /**
+     * 猫として話す
+     */
+    "flagSpeakAsCat": string;
+    /**
+     * 有効にすると、あなたの投稿の 「な」を「にゃ」にします。
+     */
+    "flagSpeakAsCatDescription": string;
+    /**
+     * 耳の外側の色
+     */
+    "outerEarColor": string;
+    /**
+     * 耳の外側の色を変更します。空欄でアイコンから色を取得します。
+     */
+    "outerEarColorDescription": string;
+    /**
+     * 耳の内側の色
+     */
+    "innerEarColor": string;
+    /**
+     * 耳の内側の色を変更します。
+     */
+    "innerEarColorDescription": string;
+    /**
      * タイムラインにノートへの返信を表示する
      */
     "flagShowTimelineReplies": string;

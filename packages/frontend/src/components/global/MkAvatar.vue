@@ -4,11 +4,11 @@ SPDX-License-Identifier: AGPL-3.0-only
 -->
 
 <template>
-<component :is="link ? MkA : 'span'" v-user-preview="preview ? user.id : undefined" v-bind="bound" class="_noSelect" :class="[$style.root, { [$style.animation]: animation, [$style.cat]: user.isCat, [$style.square]: squareAvatars }]" :style="{ color }" :title="acct(user)" @click="onClick">
-	<MkImgWithBlurhash :class="$style.inner" :src="url" :hash="user.avatarBlurhash" :cover="true" :onlyAvgColor="true"/>
+<component :is="link ? MkA : 'span'" v-user-preview="preview ? user.id : undefined" v-bind="bound" class="_noSelect" :class="[$style.root, { [$style.animation]: animation, [$style.cat]: user.isCat, [$style.square]: squareAvatars }]" :style="{ color: outerEarColor }" :title="acct(user)" @click="onClick">	<MkImgWithBlurhash :class="$style.inner" :src="url" :hash="user.avatarBlurhash" :cover="true" :onlyAvgColor="true"/>
 	<MkUserOnlineIndicator v-if="indicator" :class="$style.indicator" :user="user"/>
 	<div v-if="user.isCat" :class="[$style.ears]">
 		<div :class="$style.earLeft">
+			<div :class="$style.innerEar" :style="{ backgroundColor: innerEarColor }"></div>
 			<div v-if="false" :class="$style.layer">
 				<div :class="$style.plot" :style="{ backgroundImage: `url(${JSON.stringify(url)})` }"/>
 				<div :class="$style.plot" :style="{ backgroundImage: `url(${JSON.stringify(url)})` }"/>
@@ -16,6 +16,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 			</div>
 		</div>
 		<div :class="$style.earRight">
+			<div :class="$style.innerEar" :style="{ backgroundColor: innerEarColor }"></div>
 			<div v-if="false" :class="$style.layer">
 				<div :class="$style.plot" :style="{ backgroundImage: `url(${JSON.stringify(url)})` }"/>
 				<div :class="$style.plot" :style="{ backgroundImage: `url(${JSON.stringify(url)})` }"/>
@@ -113,12 +114,32 @@ function getDecorationOffset(decoration: Omit<Misskey.entities.UserDetailed['ava
 	return offsetX === 0 && offsetY === 0 ? undefined : `${offsetX * 100}% ${offsetY * 100}%`;
 }
 
-const color = ref<string | undefined>();
+const outerEarColor = ref<string | undefined>();
 
-watch(() => props.user.avatarBlurhash, () => {
-	if (props.user.avatarBlurhash == null) return;
-	color.value = extractAvgColorFromBlurhash(props.user.avatarBlurhash);
-}, {
+function updateOuterEarColor() {
+	if (props.user.outerEarColor !== null) {
+		outerEarColor.value = props.user.outerEarColor;
+	} else if (props.user.avatarBlurhash) {
+		outerEarColor.value = extractAvgColorFromBlurhash(props.user.avatarBlurhash);
+	} else {
+		outerEarColor.value = "currentColor";
+	}
+}
+watch(() => props.user.outerEarColor, updateOuterEarColor, {
+	immediate: true,
+});
+watch(() => props.user.avatarBlurhash, updateOuterEarColor, {
+	immediate: true,
+});
+const innerEarColor = ref<string | undefined>();
+function updateInnerEarColor() {
+	if (props.user.innerEarColor !== null) {
+		innerEarColor.value = props.user.innerEarColor;
+	} else {
+		innerEarColor.value = "#df648f";
+	}
+}
+watch(() => props.user.innerEarColor, updateInnerEarColor, {
 	immediate: true,
 });
 </script>
@@ -209,20 +230,16 @@ watch(() => props.user.avatarBlurhash, () => {
 			display: inline-block;
 			height: 50%;
 			width: 50%;
-			background: v-bind(
-				'(user.outerEarColor === "" || user.outerEarColor === null) ? "currentColor" : "#" + user.outerEarColor'
-			);
+			background: currentColor;
 
-			&::after {
+			> .innerEar {
 				contain: strict;
 				content: '';
 				display: block;
 				width: 60%;
 				height: 60%;
 				margin: 20%;
-				background: v-bind(
-					'(user.innerEarColor === "" || `${user.outerEarColor}` === null) ? "#df548f" : "#" + user.innerEarColor'
-				);
+				background: #df548f;
 			}
 
 			> .layer {
@@ -256,7 +273,7 @@ watch(() => props.user.avatarBlurhash, () => {
 		> .earLeft {
 			transform: rotate(37.5deg) skew(30deg);
 
-			&, &::after {
+			&, > .innerEar {
 				border-radius: 25% 75% 75%;
 			}
 
@@ -285,7 +302,7 @@ watch(() => props.user.avatarBlurhash, () => {
 		> .earRight {
 			transform: rotate(-37.5deg) skew(-30deg);
 
-			&, &::after {
+			&, .innerEar {
 				border-radius: 75% 25% 75% 75%;
 			}
 

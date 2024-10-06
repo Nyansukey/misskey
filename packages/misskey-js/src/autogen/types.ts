@@ -3736,6 +3736,9 @@ export type components = {
         }[];
       isBot?: boolean;
       isCat?: boolean;
+			speakAsCat?: boolean;
+			innerEarColor: string | null;
+			outerEarColor: string | null;
       instance?: {
         name: string | null;
         softwareName: string | null;
@@ -19839,6 +19842,9 @@ export type operations = {
           preventAiLearning?: boolean;
           isBot?: boolean;
           isCat?: boolean;
+					speakAsCat?: boolean;
+					innerEarColor: string | null;
+					outerEarColor: string | null;
           injectFeaturedNote?: boolean;
           receiveAnnouncementEmail?: boolean;
           alwaysMarkNsfw?: boolean;

@@ -40,6 +40,9 @@ describe('ユーザー', () => {
 			avatarDecorations: user.avatarDecorations,
 			isBot: user.isBot,
 			isCat: user.isCat,
+			speakAsCat: user.speakAsCat,
+			outerEarColor: user.outerEarColor,
+			innerEarColor: user.innerEarColor,
 			instance: user.instance,
 			emojis: user.emojis,
 			onlineStatus: user.onlineStatus,
@@ -310,6 +313,9 @@ describe('ユーザー', () => {
 		assert.deepStrictEqual(response.avatarDecorations, []);
 		assert.strictEqual(response.isBot, false);
 		assert.strictEqual(response.isCat, false);
+		assert.strictEqual(response.speakAsCat, false);
+		response.outerEarColor && assert.match(response.outerCatEarColor, /^#[0-9a-f]{6}$/);
+		response.innerEarColor && assert.match(response.innerCatEarColor, /^#[0-9a-f]{6}$/);
 		assert.strictEqual(response.instance, undefined);
 		assert.deepStrictEqual(response.emojis, {});
 		assert.strictEqual(response.onlineStatus, 'unknown');
@@ -447,6 +453,10 @@ describe('ユーザー', () => {
 		{ parameters: () => ({ isBot: false }) },
 		{ parameters: () => ({ isCat: true }) },
 		{ parameters: () => ({ isCat: false }) },
+		{ parameters: () => ({ speakAsCat: true }) },
+		{ parameters: () => ({ speakAsCat: false }) },
+		{ parameters: () => ({ outerEarColor: "#000000" }) },
+		{ parameters: () => ({ innerEarColor: "#000000" }) },
 		{ parameters: () => ({ injectFeaturedNote: true }) },
 		{ parameters: () => ({ injectFeaturedNote: false }) },
 		{ parameters: () => ({ receiveAnnouncementEmail: true }) },

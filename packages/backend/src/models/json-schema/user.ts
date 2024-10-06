@@ -115,6 +115,18 @@ export const packedUserLiteSchema = {
 			type: 'boolean',
 			nullable: false, optional: true,
 		},
+		speakAsCat: {
+			type: 'boolean',
+			nullable: false, optional: true,
+		},
+		innerEarColor: {
+			type: 'string',
+			nullable: false, optional: true,
+		},
+		outerEarColor: {
+			type: 'string',
+			nullable: false, optional: true,
+		},
 		instance: {
 			type: 'object',
 			nullable: false, optional: true,

@@ -112,15 +112,17 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 			<MkSwitch v-model="profile.speakAsCat">{{ i18n.ts.speakAsCat }}<template #caption>{{ i18n.ts.speakAsCatDescription }}</template></MkSwitch>
 
-			<NsColorPicker v-model="profile.innerEarColor" manualSave>
-					<template #label>{{ i18n.ts.innerEarColor }}</template>
-					<template #caption>{{ i18n.ts.innerEarColorDescription }}</template>
-			</NsColorPicker>
-
-			<NsColorPicker v-model="profile.outerEarColor" manualSave>
+			<MkInput v-model="profile.outerEarColor" manualSave>
 				<template #label>{{ i18n.ts.outerEarColor }}</template>
+				<template #prefix>#</template>
 				<template #caption>{{ i18n.ts.outerEarColorDescription }}</template>
-			</NsColorPicker>
+			</MkInput>
+
+			<MkInput v-model="profile.innerEarColor" manualSave>
+				<template #label>{{ i18n.ts.innerEarColor }}</template>
+				<template #prefix>#</template>
+				<template #caption>{{ i18n.ts.innerEarColorDescription }}</template>
+			</MkInput>
 
 			<MkSwitch v-model="profile.isBot">{{ i18n.ts.flagAsBot }}<template #caption>{{ i18n.ts.flagAsBotDescription }}</template></MkSwitch>
 		</div>
