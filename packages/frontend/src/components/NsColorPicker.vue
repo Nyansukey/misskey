@@ -68,7 +68,7 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue"]);
 
 const defaultColor = "#000000"; // デフォルトのカラーコード
-const colorValue = ref(props.modelValue || defaultColor);
+const colorValue = ref("#" + props.modelValue || defaultColor);
 const changed = ref(false);
 
 const rgb = computed(() => {
