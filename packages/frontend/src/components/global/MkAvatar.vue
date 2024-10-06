@@ -209,7 +209,9 @@ watch(() => props.user.avatarBlurhash, () => {
 			display: inline-block;
 			height: 50%;
 			width: 50%;
-			background: currentColor;
+			background: v-bind(
+				'(user.outerEarColor === "" || user.outerEarColor === null) ? "currentColor" : "#" + user.outerEarColor'
+			);
 
 			&::after {
 				contain: strict;
@@ -218,7 +220,9 @@ watch(() => props.user.avatarBlurhash, () => {
 				width: 60%;
 				height: 60%;
 				margin: 20%;
-				background: #df548f;
+				background: v-bind(
+					'(user.innerEarColor === "" || `${user.outerEarColor}` === null) ? "#df548f" : "#" + user.innerEarColor'
+				);
 			}
 
 			> .layer {

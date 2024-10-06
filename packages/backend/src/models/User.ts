@@ -186,6 +186,23 @@ export class MiUser {
 
 	@Column('boolean', {
 		default: false,
+		comment: 'Whether the user speaks as a cat.',
+	})
+	public speakAsCat: boolean;
+
+	@Column('varchar', {
+		length: 6, nullable: true,
+	})
+	public outerEarColor: string | null;
+
+	@Column('varchar', {
+		length: 6, nullable: false,
+	})
+	public innerEarColor: string | 'df548f';
+
+
+	@Column('boolean', {
+		default: false,
 		comment: 'Whether the User is the root.',
 	})
 	public isRoot: boolean;

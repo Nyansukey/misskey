@@ -109,6 +109,19 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 		<div class="_gaps_m">
 			<MkSwitch v-model="profile.isCat">{{ i18n.ts.flagAsCat }}<template #caption>{{ i18n.ts.flagAsCatDescription }}</template></MkSwitch>
+
+			<MkSwitch v-model="profile.isCat">{{ i18n.ts.speakAsCat }}<template #caption>{{ i18n.ts.speakAsCatDescription }}</template></MkSwitch>
+
+			<NsColorPicker v-model="profile.innerEarColor" manualSave>
+					<template #label>{{ i18n.ts.innerEarColor }}</template>
+					<template #caption>{{ i18n.ts.innerEarColorDescription }}</template>
+			</NsColorPicker>
+
+			<NsColorPicker v-model="profile.outerEarColor" manualSave>
+				<template #label>{{ i18n.ts.outerEarColor }}</template>
+				<template #caption>{{ i18n.ts.outerEarColorDescription }}</template>
+			</NsColorPicker>
+
 			<MkSwitch v-model="profile.isBot">{{ i18n.ts.flagAsBot }}<template #caption>{{ i18n.ts.flagAsBotDescription }}</template></MkSwitch>
 		</div>
 	</MkFolder>
@@ -117,6 +130,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, reactive, ref, watch, defineAsyncComponent } from 'vue';
+import NsColorPicker from "@/components/NsColorPicker.vue";
 import MkButton from '@/components/MkButton.vue';
 import MkInput from '@/components/MkInput.vue';
 import MkSwitch from '@/components/MkSwitch.vue';
@@ -151,6 +165,9 @@ const profile = reactive({
 	lang: $i.lang,
 	isBot: $i.isBot ?? false,
 	isCat: $i.isCat ?? false,
+	speakAsCat: $i.speakAsCat ?? false,
+	innerEarColor: $i.innerEarColor,
+	outerEarColor: $i.outerEarColor ?? "df548f",
 });
 
 watch(() => profile, () => {
@@ -202,6 +219,9 @@ function save() {
 		lang: profile.lang || null,
 		isBot: !!profile.isBot,
 		isCat: !!profile.isCat,
+		speakAsCat: !!profile.speakAsCat,
+		innerEarColor: profile.innerEarColor,
+		outerEarColor: profile.outerEarColor ?? "df548f",
 	});
 	globalEvents.emit('requestClearPageCache');
 	claimAchievement('profileFilled');
