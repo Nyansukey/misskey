@@ -556,6 +556,11 @@ const extension_context_definition = {
 	'_misskey_summary': 'misskey:_misskey_summary',
 	'_misskey_followedMessage': 'misskey:_misskey_followedMessage',
 	'isCat': 'misskey:isCat',
+	firefish: "https://joinfirefish.org/ns#",
+	"speakAsCat": "firefish:speakAsCat",
+	nyansukey: 'https://help.nyansukey.net/ns#',
+	'outerEarColor': 'nyansukey:outerEarColor',
+	'innerEarColor': 'nyansukey:innerEarColor',
 	// vcard
 	vcard: 'http://www.w3.org/2006/vcard/ns#',
 } satisfies Context;
