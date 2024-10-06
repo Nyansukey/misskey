@@ -62,7 +62,7 @@ const props = withDefaults(defineProps<{
 	link?: boolean;
 	preview?: boolean;
 	indicator?: boolean;
-	decorations?: Omit<Misskey.entities.UserDetailed['avatarDecorations'][number], 'id'>[];
+	decorations?: (Omit<Misskey.entities.UserDetailed['avatarDecorations'][number], 'id'> & { blink?: boolean; })[];
 	forceShowDecoration?: boolean;
 }>(), {
 	target: null,
