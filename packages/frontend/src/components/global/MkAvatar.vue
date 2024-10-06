@@ -4,12 +4,12 @@ SPDX-License-Identifier: AGPL-3.0-only
 -->
 
 <template>
-<component :is="link ? MkA : 'span'" v-user-preview="preview ? user.id : undefined" v-bind="bound" class="_noSelect" :class="[$style.root, { [$style.animation]: animation, [$style.cat]: user.isCat, [$style.square]: squareAvatars }]" :style="{ color: outerCatEarColor }" :title="acct(user)" @click="onClick">
+<component :is="link ? MkA : 'span'" v-user-preview="preview ? user.id : undefined" v-bind="bound" class="_noSelect" :class="[$style.root, { [$style.animation]: animation, [$style.cat]: user.isCat, [$style.square]: squareAvatars }]" :style="{ color: outerEarColor }" :title="acct(user)" @click="onClick">
 	<MkImgWithBlurhash :class="$style.inner" :src="url" :hash="user.avatarBlurhash" :cover="true" :onlyAvgColor="true"/>
 	<MkUserOnlineIndicator v-if="indicator" :class="$style.indicator" :user="user"/>
 	<div v-if="user.isCat" :class="[$style.ears]">
 		<div :class="$style.earLeft">
-			<div :class="$style.innerEar" :style="{ backgroundColor: innerCatEarColor }"></div>
+			<div :class="$style.innerEar" :style="{ backgroundColor: innerEarColor }"></div>
 			<div v-if="false" :class="$style.layer">
 				<div :class="$style.plot" :style="{ backgroundImage: `url(${JSON.stringify(url)})` }"/>
 				<div :class="$style.plot" :style="{ backgroundImage: `url(${JSON.stringify(url)})` }"/>
@@ -17,7 +17,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 			</div>
 		</div>
 		<div :class="$style.earRight">
-			<div :class="$style.innerEar" :style="{ backgroundColor: innerCatEarColor }"></div>
+			<div :class="$style.innerEar" :style="{ backgroundColor: innerEarColor }"></div>
 			<div v-if="false" :class="$style.layer">
 				<div :class="$style.plot" :style="{ backgroundImage: `url(${JSON.stringify(url)})` }"/>
 				<div :class="$style.plot" :style="{ backgroundImage: `url(${JSON.stringify(url)})` }"/>
@@ -115,42 +115,42 @@ function getDecorationOffset(decoration: Omit<Misskey.entities.UserDetailed['ava
 	return offsetX === 0 && offsetY === 0 ? undefined : `${offsetX * 100}% ${offsetY * 100}%`;
 }
 
-const outerCatEarColor = ref<string | undefined>();
+const outerEarColor = ref<string | undefined>();
 
-function updateOuterCatEarColor() {
+function updateouterEarColor() {
 	if (props.user.overrideCatEarColor) {
-		outerCatEarColor.value = props.user.outerCatEarColor;
+		outerEarColor.value = "#" + props.user.outerEarColor;
 	} else if (props.user.avatarBlurhash) {
-		outerCatEarColor.value = extractAvgColorFromBlurhash(props.user.avatarBlurhash);
+		outerEarColor.value = extractAvgColorFromBlurhash(props.user.avatarBlurhash);
 	} else {
-		outerCatEarColor.value = "#5b6880";
+		outerEarColor.value = "#5b6880";
 	}
 }
 
-watch(() => props.user.overrideCatEarColor, updateOuterCatEarColor, {
+watch(() => props.user.overrideCatEarColor, updateouterEarColor, {
 	immediate: true,
 });
-watch(() => props.user.outerCatEarColor, updateOuterCatEarColor, {
+watch(() => props.user.outerEarColor, updateouterEarColor, {
 	immediate: true,
 });
-watch(() => props.user.avatarBlurhash, updateOuterCatEarColor, {
+watch(() => props.user.avatarBlurhash, updateouterEarColor, {
 	immediate: true,
 });
 
-const innerCatEarColor = ref<string | undefined>();
+const innerEarColor = ref<string | undefined>();
 
-function updateInnerCatEarColor() {
+function updateinnerEarColor() {
 	if (props.user.overrideCatEarColor) {
-		innerCatEarColor.value = props.user.innerCatEarColor;
+		innerEarColor.value = "#" + props.user.innerEarColor;
 	} else {
-		innerCatEarColor.value = "#df648f";
+		innerEarColor.value = "#df648f";
 	}
 }
 
-watch(() => props.user.overrideCatEarColor, updateInnerCatEarColor, {
+watch(() => props.user.overrideCatEarColor, updateinnerEarColor, {
 	immediate: true,
 });
-watch(() => props.user.innerCatEarColor, updateInnerCatEarColor, {
+watch(() => props.user.innerEarColor, updateinnerEarColor, {
 	immediate: true,
 });
 </script>
