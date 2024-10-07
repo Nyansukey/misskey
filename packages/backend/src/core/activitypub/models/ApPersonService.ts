@@ -357,8 +357,8 @@ export class ApPersonService implements OnModuleInit {
 					isBot,
 					isCat: (person as any).isCat === true,
 					speakAsCat: (person as any).speakAsCat != null ? (person as any).speakAsCat === true : (person as any).isCat === true,
-					innerEarColor: (person as any).innerEarColor,
-					outerEarColor: (person as any).outerEarColor,
+					innerEarColor: (person as any).innerEarColor.replace("#", "").substring(0, 6),
+					outerEarColor: (person as any).outerEarColor.replace("#", "").substring(0, 6),
 					emojis,
 				})) as MiRemoteUser;
 
