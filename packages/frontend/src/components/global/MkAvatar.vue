@@ -119,7 +119,7 @@ const outerEarColor = ref<string | undefined>();
 
 function updateouterEarColor() {
 	if (props.user.outerEarColor !== null) {
-		outerEarColor.value = `#${props.user.outerEarColor}`;
+		outerEarColor.value = props.user.outerEarColor;
 	} else if (props.user.avatarBlurhash) {
 		outerEarColor.value = extractAvgColorFromBlurhash(props.user.avatarBlurhash);
 	} else {
@@ -141,7 +141,7 @@ const innerEarColor = ref<string | undefined>();
 
 function updateinnerEarColor() {
 	if (props.user.innerEarColor !== null) {
-		innerEarColor.value = `#${props.user.innerEarColor}`;
+		innerEarColor.value = props.user.innerEarColor;
 	} else {
 		innerEarColor.value = "#df648f";
 	}

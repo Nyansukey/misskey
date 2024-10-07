@@ -198,7 +198,7 @@ export class MiUser {
 	@Column('varchar', {
 		length: 6, nullable: false,
 	})
-	public innerEarColor: string | 'df548f';
+	public innerEarColor: string | '#df548f';
 
 
 	@Column('boolean', {

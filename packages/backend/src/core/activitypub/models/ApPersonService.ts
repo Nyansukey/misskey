@@ -357,8 +357,8 @@ export class ApPersonService implements OnModuleInit {
 					isBot,
 					isCat: (person as any).isCat === true,
 					speakAsCat: (person as any).speakAsCat != null ? (person as any).speakAsCat === true : (person as any).isCat === true,
-					innerEarColor: (person as any).innerEarColor.replace("#", "").substring(0, 6),
-					outerEarColor: (person as any).outerEarColor.replace("#", "").substring(0, 6),
+					innerEarColor: (person as any).innerEarColor,
+					outerEarColor: (person as any).outerEarColor,
 					emojis,
 				})) as MiRemoteUser;
 
@@ -522,8 +522,8 @@ export class ApPersonService implements OnModuleInit {
 			isBot: getApType(object) === 'Service' || getApType(object) === 'Application',
 			isCat: (person as any).isCat === true,
 			speakAsCat: (person as any).speakAsCat != null ? (person as any).speakAsCat === true : (person as any).isCat === true,
-			innerEarColor: (person as any).innerEarColor.replace("#", "").substring(0, 6),
-			outerEarColor: (person as any).outerEarColor.replace("#", "").substring(0, 6),
+			innerEarColor: (person as any).innerEarColor,
+			outerEarColor: (person as any).outerEarColor,
 			isLocked: person.manuallyApprovesFollowers,
 			movedToUri: person.movedTo ?? null,
 			alsoKnownAs: person.alsoKnownAs ?? null,
