@@ -110,16 +110,16 @@ SPDX-License-Identifier: AGPL-3.0-only
 		<div class="_gaps_m">
 			<MkSwitch v-model="profile.isCat">{{ i18n.ts.flagAsCat }}<template #caption>{{ i18n.ts.flagAsCatDescription }}</template></MkSwitch>
 
-			<MkSwitch v-model="profile.speakAsCat">{{ i18n.ts.flagSpeakAsCat }}<template #caption>{{ i18n.ts.flagSpeakAsCatDescription }}</template></MkSwitch>
+			<MkSwitch v-model="profile.speakAsCat">{{ i18n.ts.flagSpeakAsCat }}<span class="_beta">{{ i18n.ts.beta }}</span><template #caption>{{ i18n.ts.flagSpeakAsCatDescription }}</template></MkSwitch>
 
 			<MkInput v-model="profile.outerEarColor" manualSave>
-				<template #label>{{ i18n.ts.outerEarColor }}</template>
+				<template #label>{{ i18n.ts.outerEarColor }}<span class="_beta">{{ i18n.ts.beta }}</span></template>
 				<template #prefix>#</template>
 				<template #caption>{{ i18n.ts.outerEarColorDescription }}</template>
 			</MkInput>
 
 			<MkInput v-model="profile.innerEarColor" manualSave>
-				<template #label>{{ i18n.ts.innerEarColor }}</template>
+				<template #label>{{ i18n.ts.innerEarColor }}<span class="_beta">{{ i18n.ts.beta }}</span></template>
 				<template #prefix>#</template>
 				<template #caption>{{ i18n.ts.innerEarColorDescription }}</template>
 			</MkInput>
