@@ -84,6 +84,13 @@ type CondFormulaValueIsCat = {
 };
 
 /**
+ * 猫アカウントの場合のみ成立とする
+ */
+type CondFormulaValueSpeakAsCat = {
+	type: 'speakAsCat';
+};
+
+/**
  * 「ユーザを見つけやすくする」が有効なアカウントの場合のみ成立とする
  */
 type CondFormulaValueIsExplorable = {
@@ -164,6 +171,7 @@ export type RoleCondFormulaValue = { id: string } & (
 	CondFormulaValueIsLocked |
 	CondFormulaValueIsBot |
 	CondFormulaValueIsCat |
+	CondFormulaValueSpeakAsCat |
 	CondFormulaValueIsExplorable |
 	CondFormulaValueRoleAssignedTo |
 	CondFormulaValueCreatedLessThan |
