@@ -35,7 +35,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 				scale: getDecorationScale(decoration),
 				translate: getDecorationOffset(decoration),
 			}"
-			alt=""
+			:alt = "`${innerEarColor}, ${outerEarColor}`"
 		>
 	</template>
 </component>
