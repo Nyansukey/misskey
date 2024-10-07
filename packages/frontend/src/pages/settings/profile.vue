@@ -158,6 +158,8 @@ const Sortable = defineAsyncComponent(() => import('vuedraggable').then(x => x.d
 
 const reactionAcceptance = computed(defaultStore.makeGetterSetter('reactionAcceptance'));
 
+console.log(i18n.ts.flagSpeakAsCat);
+
 const profile = reactive({
 	name: $i.name,
 	description: $i.description,
