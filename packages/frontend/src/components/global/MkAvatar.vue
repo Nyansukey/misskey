@@ -35,7 +35,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 				scale: getDecorationScale(decoration),
 				translate: getDecorationOffset(decoration),
 			}"
-			:alt = "`${innerEarColor}, ${outerEarColor}`"
+			alt=""
 		>
 	</template>
 </component>
@@ -118,13 +118,14 @@ function getDecorationOffset(decoration: Omit<Misskey.entities.UserDetailed['ava
 const outerEarColor = ref<string | undefined>();
 
 function updateouterEarColor() {
-	if (props.user.overrideCatEarColor) {
-		outerEarColor.value = "#" + props.user.outerEarColor;
+	if (props.user.outerEarColor !== null) {
+		outerEarColor.value = `#${props.user.outerEarColor}`;
 	} else if (props.user.avatarBlurhash) {
 		outerEarColor.value = extractAvgColorFromBlurhash(props.user.avatarBlurhash);
 	} else {
 		outerEarColor.value = "#5b6880";
 	}
+	console.log("outerEarColor: ", outerEarColor.value);
 }
 
 watch(() => props.user.overrideCatEarColor, updateouterEarColor, {
@@ -140,11 +141,12 @@ watch(() => props.user.avatarBlurhash, updateouterEarColor, {
 const innerEarColor = ref<string | undefined>();
 
 function updateinnerEarColor() {
-	if (props.user.overrideCatEarColor) {
-		innerEarColor.value = "#" + props.user.innerEarColor;
+	if (props.user.innerEarColor !== null) {
+		innerEarColor.value = `${props.user.innerEarColor}`;
 	} else {
 		innerEarColor.value = "#df648f";
 	}
+	console.log("innerEarColor: ", innerEarColor.value);
 }
 
 watch(() => props.user.overrideCatEarColor, updateinnerEarColor, {
