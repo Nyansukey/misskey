@@ -125,7 +125,6 @@ function updateouterEarColor() {
 	} else {
 		outerEarColor.value = "#5b6880";
 	}
-	console.log("outerEarColor: ", outerEarColor.value);
 }
 
 watch(() => props.user.overrideCatEarColor, updateouterEarColor, {
@@ -142,11 +141,10 @@ const innerEarColor = ref<string | undefined>();
 
 function updateinnerEarColor() {
 	if (props.user.innerEarColor !== null) {
-		innerEarColor.value = `${props.user.innerEarColor}`;
+		innerEarColor.value = `#${props.user.innerEarColor}`;
 	} else {
 		innerEarColor.value = "#df648f";
 	}
-	console.log("innerEarColor: ", innerEarColor.value);
 }
 
 watch(() => props.user.overrideCatEarColor, updateinnerEarColor, {

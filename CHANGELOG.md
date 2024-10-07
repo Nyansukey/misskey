@@ -11,6 +11,8 @@
 - Feat: サーバー初期設定時に初期パスワードを設定できるように
 - Feat: 通報にモデレーションノートを残せるように
 - Feat: 通報の解決種別を設定できるように
+- Feat: 耳の色を変更できるように
+- Feat: 猫モードと猫語を話すモードを分離
 - Enhance: 通報の解決と転送を個別に行えるように
 - Enhance: セキュリティ向上のため、サインイン時もCAPTCHAを求めるようになりました
 - Enhance: 依存関係の更新
@@ -21,6 +23,8 @@
 ### Client
 - Enhance: デザインの調整
 - Enhance: ログイン画面の認証フローを改善
+- Fix: クライアント上での時間ベースの実績獲得動作が実績獲得後も発動していた問題を修正  
+  (Cherry-picked from https://activitypub.software/TransFem-org/Sharkey/-/merge_requests/657)
 
 ### Server
 - Enhance: セキュリティ向上のため、ログイン時にメール通知を行うように
